@@ -17,7 +17,7 @@ For a complete implementation of advanced capabilities, see [Turnkey HTML5 Video
  * Simple implementation of signaling broadcast (to connect automatically) and text chat, using plain files
 
 ##  Key Features for HTML5 Videochat 
-Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey edition.
+Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
  * 1 way to many live video streaming, in public lobby
  * 2 way videochat, in private (1 to 1) shows with request/approve interaction
  * live wallet balance display (updates from tips and other transfers)
@@ -43,7 +43,7 @@ Warning: some of these features are not active/implemented in this simplified ed
  * The plain php edition refers to minimal scripts for configuring and accessing videochat room, so developers can integrate with own scripts. 
  * Plain php edition does not involve database and systems to manage members, rooms, billing. These depend on framework you want to integrate, plugins, database, member system. 
  * Applications reads parameters, wallet balance and other data with ajax calls from framework/integration scripts (that need to be implemented depending on framework, database, user scripts).
- * A complete implementation of features is available for WordPress framework. See [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source.
+ * A complete implementation of features is available for WordPress framework. See [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source. Includes user role management (performers/clients), pay per minute, integrates billing wallets.
 
 ## Main Integration Scripts
  * index.php embeds the html5 application: accessed directly creates a room and shows room link to invite others
