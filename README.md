@@ -9,14 +9,15 @@ Before installing, test the simple setup in the live demo:
 [PHP HTML5 Videochat - Live Demo](https://videowhisper.com/demos/html5-videochat/)
 
 This plain php edition includes code and minimal scripts tp embed a HTML5 Videochat app and test/showcase some features. 
-For a complete implementation of advanced capabilities,see [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source.
+For a complete implementation of advanced capabilities,see [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source. The turnkey site edition implements pay per minute videochat (group and private 2 way video calls) with membership, billing, advanced tools.
 
 ## Simple PHP Edition Features
  * Automatically create a room as broadcaster on access and show link to invite participants that will access as viewers
  * Broadcast and playback live video using HTML5 WebRTC
  * Simple implementation of signaling broadcast (to connect automatically) and text chat, using plain files
 
-##  Key Features for HTML5 Videochat (some not active/implemented in this edition)
+##  Key Features for HTML5 Videochat 
+Warning: some of these features re not active/implemented in this edition, but can be enabled as in turnkey edition.
  * 1 way to many live video streaming, in public lobby
  * 2 way videochat, in private (1 to 1) shows with request/approve interaction
  * live wallet balance display (updates from tips and other transfers)
@@ -27,7 +28,7 @@ For a complete implementation of advanced capabilities,see [Turnkey HTML5 Videoc
  * fullscreen for videochat interface or playback video
  * collaboration mode with file sharing
  * adaptive target video bitrate (depending on cam resolution) and configuration in resolution change
- * broadcasting stats (open broadcasting controls and stats should show in few seconds)
+ * broadcasting/playback stats (open controls and stats should show in few seconds)
  * dark mode / lights on: each user can toggle interface mode live at runtime
 
 ## Installation Instructions
@@ -47,7 +48,7 @@ For a complete implementation of advanced capabilities,see [Turnkey HTML5 Videoc
 This is a simple setup showcasing easy app deployment and integration with other PHP scripts. 
 For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrtchost.com/hosting-plans/) that include requirements for all features and free installation.
 
-For assistance and clarifications, [Contact VideoWhisper](https://videowhisper.com/tickets_submit.php).
+For assistance and clarifications, [Contact VideoWhisper Support](https://videowhisper.com/tickets_submit.php).
 
 
 For a more advanced setup, see this turnkey site solution based on WP: 
