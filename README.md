@@ -49,7 +49,7 @@ Warning: some of these features are not active/implemented in this simplified ed
  * app-call.php is called by application to retrieve parameters, interact with web server, update status and chat (ajax calls)
  * app-functions.php functions implementing features for app-call.php
  * settings.php settings and options, including streaming settings and url for calls (when integrating with own framework)
-
+Scripts also contain comments for clarifications/suggestions.
 
 This is a simple setup showcasing easy app deployment and integration with other PHP scripts. 
 For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrtchost.com/hosting-plans/) that include requirements for all features and free installation.
