@@ -10,6 +10,7 @@
 
 		function varSave($path, $var)
 		{
+			if (!file_exists('uploads')) mkdir('uploads');
 			file_put_contents('uploads/' . $path, serialize($var));
 		}
 
