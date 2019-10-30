@@ -40,20 +40,20 @@ HTMLCODE;
 $headCode .= '<link href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet" type="text/css">';
 
 //app css & js
-$CSSfiles = scandir(dirname(  __FILE__ ) . '/videowhisper/css/');
+$CSSfiles = scandir(dirname(  __FILE__ ) . '/static/css/');
 foreach($CSSfiles as $filename)
 	if (strpos($filename,'.css')&&!strpos($filename,'.css.map'))
-		$headCode .= '<link href="' . VW_H5V_URL . 'videowhisper/css/' . $filename . '" rel="stylesheet" type="text/css">';
+		$headCode .= '<link href="' . VW_H5V_URL . 'static/css/' . $filename . '" rel="stylesheet" type="text/css">';
 
-$JSfiles = scandir(dirname(  __FILE__ ) . '/videowhisper/js/');
+$JSfiles = scandir(dirname(  __FILE__ ) . '/static/js/');
 foreach ($JSfiles as $filename)
 	if ( strpos($filename,'.js') && !strpos($filename,'.js.map'))
-		$bodyCode .= '<script src="' . VW_H5V_URL . 'videowhisper/js/' . $filename. '" type="text/javascript"></script>';
+		$bodyCode .= '<script src="' . VW_H5V_URL . 'static/js/' . $filename. '" type="text/javascript"></script>';
 
 
 //room link
 $roomURL = $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] . explode('?', $_SERVER['REQUEST_URI'], 2)[0] . '?r=' . $roomID;
-$bodyCode .= '<div class="ui segment"><h4 class="ui header">Room URL</h4>' . $roomURL .'</div>';
+$bodyCode .= '<div class="ui segment"><h4 class="ui header">Room URL</h4>Participants can access room playback screen at this address:<br>' . $roomURL .'</div>';
 ?>
 <head>
 <?php echo $headCode ?>

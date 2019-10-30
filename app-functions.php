@@ -30,6 +30,75 @@
 		
 // app parameter functions
 
+	function __(  $text,  $domain = 'default' )
+	{
+		return 	$text;
+	}
+	
+	function appText()
+	{
+		//implement translations
+
+		//returns texts
+		return array(
+			'Send' => __('Send', 'ppv-live-webcams'),
+			'Type your message' => __('Type your message', 'ppv-live-webcams'),
+
+			'Chat' => __('Chat', 'ppv-live-webcams'),
+			'Camera' => __('Camera', 'ppv-live-webcams'),
+			'Users' => __('Users', 'ppv-live-webcams'),
+			'Options' => __('Options', 'ppv-live-webcams'),
+			'Files' => __('Files', 'ppv-live-webcams'),
+			'Presentation' => __('Presentation', 'ppv-live-webcams'),
+
+			'Tap for Sound' => __('Tap for Sound', 'ppv-live-webcams'),
+			'Enable Audio' => __('Enable Audio', 'ppv-live-webcams'),
+			'Mute' => __('Mute', 'ppv-live-webcams'),
+			'Reload' => __('Reload', 'ppv-live-webcams'),
+
+			'Broadcast' => __('Broadcast', 'ppv-live-webcams'),
+			'Stop Broadcast' => __('Stop Broadcast', 'ppv-live-webcams'),
+			'Make a selection to start!' => __('Make a selection to start!', 'ppv-live-webcams'),
+
+			'Lights On' => __('Lights On', 'ppv-live-webcams'),
+			'Dark Mode' => __('Dark Mode', 'ppv-live-webcams'),
+			'Enter Fullscreen' => __('Enter Fullscreen', 'ppv-live-webcams'),
+			'Exit Fullscreen' => __('Exit Fullscreen', 'ppv-live-webcams'),
+
+			'Site Menu' => __('Site Menu', 'ppv-live-webcams'),
+
+			'Request Private' => __('Request Private', 'ppv-live-webcams'),
+			'Request Private 2 Way Videochat Show' => __('Request Private 2 Way Videochat Show', 'ppv-live-webcams'),
+			'Performer Disabled Private Requests' => __('Performer Disabled Private Requests', 'ppv-live-webcams'),
+			'Performer is Busy in Private' => __('Performer is Busy in Private', 'ppv-live-webcams'),
+			'Performer is Not Online' => __('Performer is Not Online', 'ppv-live-webcams'),
+			'Nevermind' => __('Nevermind', 'ppv-live-webcams'),
+			'Accept' => __('Accept', 'ppv-live-webcams'),
+			'Decline' => __('Decline', 'ppv-live-webcams'),
+			'Close Private' => __('Close Private', 'ppv-live-webcams'),
+
+			'Next' => __('Next', 'ppv-live-webcams'),
+			'Next: Random Videochat Room' => __('Next: Random Videochat Room', 'ppv-live-webcams'),
+
+			'Name' => __('Name', 'ppv-live-webcams'),
+			'Size' => __('Size', 'ppv-live-webcams'),
+			'Age' => __('Age', 'ppv-live-webcams'),
+			'Upload: Drag and drop files here, or click to select files' =>  __('Upload: Drag and drop files here, or click to select files', 'ppv-live-webcams'),
+			'Uploading. Please wait...' =>  __('Uploading. Please wait...', 'ppv-live-webcams'),
+			'Open' => __('Open', 'ppv-live-webcams'),
+			'Delete' => __('Delete', 'ppv-live-webcams'),
+
+			'Media Displayed' => __('Media Displayed', 'ppv-live-webcams'),
+			'Remove' => __('Remove', 'ppv-live-webcams'),
+			'Default' => __('Default', 'ppv-live-webcams'),
+			'Empty' => __('Empty', 'ppv-live-webcams'),
+
+			'Profile' => __('Profile', 'ppv-live-webcams'),
+			'Show' => __('Show', 'ppv-live-webcams'),
+		);
+	}
+
+
 function appRoomUsers($roomID, $options)
 	{
 		
@@ -93,8 +162,6 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 
 	$room['ID'] = $roomID;
 	$room['name'] = 'Room' . $roomID;
-
-
 
 	$room['performer'] = 'Performer' . (10000+$roomID);
 	$room['performerID'] = (10000+$roomID);

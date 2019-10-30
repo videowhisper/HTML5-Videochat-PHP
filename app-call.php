@@ -64,6 +64,7 @@ if ($task == 'login')
 
 	];
 
+	$response['config']['text'] = appText(); //translations
 
 	$response['config']['exitURL'] = VW_H5V_URL . 'info.php?i=exit';
 	$response['config']['balanceURL'] =  VW_H5V_URL . 'info.php?i=wallet' ;
