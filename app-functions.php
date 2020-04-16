@@ -35,13 +35,32 @@
 	{
 		return 	$text;
 	}
+
 	
+	 function appSfx()
+	{
+		//sound effects sources
+		
+		$base = VW_H5V_URL. 'sounds/';
+		
+		
+		return array(
+		'message' => $base . 'message.mp3',
+		'hello' => $base . 'hello.mp3',
+		'leave' => $base . 'leave.mp3',	
+		'call' => $base . 'call.mp3',
+		'warning' => $base . 'warning.mp3',
+		'error' => $base . 'error.mp3',
+		'buzz' => $base . 'buzz.mp3',
+		);
+	}
+		
 	function appText()
 	{
 		//implement translations
 
 		//returns texts
-		return array(
+			return array(
 			'Send' => __('Send', 'ppv-live-webcams'),
 			'Type your message' => __('Type your message', 'ppv-live-webcams'),
 
@@ -96,6 +115,12 @@
 
 			'Profile' => __('Profile', 'ppv-live-webcams'),
 			'Show' => __('Show', 'ppv-live-webcams'),
+
+			'Private Call' => __('Private Call', 'ppv-live-webcams'),
+			'Exit' => __('Exit', 'ppv-live-webcams'),
+
+			'External Broadcast' => __('External Broadcast', 'ppv-live-webcams'),
+			'Broadcast with external apps for advanced compositions, scenes, effects or reliability compared to web based interface and protocols. External broadcasts have higher latency and improved capacity, reliability specific to HLS delivery method. New broadcasts show in about 10 seconds and unavailability updates after 1 minute.' => __('Broadcast with external apps for advanced compositions, scenes, effects or reliability compared to web based interface and protocols. External broadcasts have higher latency and improved capacity, reliability specific to HLS delivery method. New broadcasts show in about 10 seconds and unavailability updates after 1 minute.', 'ppv-live-webcams'),
 		);
 	}
 
