@@ -1,8 +1,8 @@
-# PHP-HTML5-Videochat
+# PHP-HTML5-Videochat / Live Streaming
 
-[PHP HTML5 Videochat](https://videowhisper.com/demos/html5-videochat/)
+[PHP HTML5 Videochat / Live Streaming: Broadcast & Playback](https://videowhisper.com/demos/html5-videochat/)
 
-![PHP Live Streaming Webcam](/snapshots/h5a-2w-c.png)
+![PHP Live Streaming Webcam](/snapshots/h5a-playback.jpg)
 
 
 Before installing, test the simple setup in the live demo:
@@ -12,26 +12,25 @@ This plain php edition includes code and minimal scripts tp embed a HTML5 Videoc
 This edition showcases streaming from 1 broadcaster to multiple viewers and chat.
 For a complete implementation of advanced capabilities, see [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source. The turnkey site edition implements pay per minute videochat (group and private 2 way video calls) with membership, billing, advanced tools.
 
-## Simple PHP Edition Features
+## Simple PHP Edition Features: Live Streaming: Broadcast & Playback
  * Automatically create a room as broadcaster on access and show link to invite participants that will access as viewers
  * Broadcast and playback live video using HTML5 WebRTC
  * Simple implementation of signaling broadcast (to connect automatically) and text chat, using plain files
  
 
-##  Key Features for HTML5 Videochat 
+##  Key Features for HTML5 Videochat / Live Streaming: Broadcast & Playback
 Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
  * 1 way to many live video streaming, in public lobby
- * 2 way videochat, in private (1 to 1) shows with request/approve interaction
- * live wallet balance display (updates from tips and other transfers)
- * tips with multiple customizable options, gift images
+ * audio recorder, emoticons, mentions in text chat
  * WebRTC relayed streaming (reliable and scalable to many clients from streaming server, independent of broadcaster upload connection)
- * group / private  paid videochat, pay per minute
  * random videochat with Next button to move to different performer room
  * fullscreen for videochat interface or playback video
- * collaboration mode with file sharing
  * adaptive target video bitrate (depending on cam resolution) and configuration in resolution change
  * broadcasting/playback stats (open controls and stats should show in few seconds)
  * dark mode / lights on: each user can toggle interface mode live at runtime
+ * Sfx (sound effects)
+ * live wallet balance display (updates from tips and other transfers)
+ * tips with multiple customizable options, gift images
  * translation support
 
 ## Installation Instructions

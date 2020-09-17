@@ -60,8 +60,12 @@ $bodyCode .= '<div class="ui segment"><h4 class="ui header">Room URL</h4>Partici
 </head>
 <body>
 <?php echo $bodyCode ?>
-<div class="ui segment"><h4 class="ui header">HTML5 Videochat - Plain PHP</h4>This is a simple embedding preview edition, with simple scripts to embed app and showcase few features. This setup implements the room lobby with simple live video streaming (from performer to participants) and text chat.
+<div class="ui segment"><h4 class="ui header">HTML5 Videochat - Plain PHP - Live Streaming: Broadcast & Playback</h4>This is a simple embedding preview edition, with simple scripts to embed app and showcase few features. This setup implements the room lobby with simple live video streaming (from performer to participants) and text chat.
 <br>Live demo for this edition is available at <a href="https://videowhisper.com/demos/html5-videochat/">HTML5 Videochat - Plain PHP - Live Demo</a>: accessing directly shows broadcasting interface for performer and link to invite other participants.
 <br>For implementation of advanced capabilities (including 2 way videocalls / shows, video conferencing, collaboration, tips, pay per minute, advanced tabbed interface), see <a href="https://paidvideochat.com/html5-videochat/">Turnkey HTML5 Videochat Site</a> edition, available as WordPress plugin with full php source.
 </div>
+
+<?php 
+	include_once('clean_older.php')
+?>
 </body>

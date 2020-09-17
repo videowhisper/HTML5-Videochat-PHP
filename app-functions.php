@@ -36,6 +36,27 @@
 		return 	$text;
 	}
 
+		 function path2url($file)
+		{
+			$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			return dirname($url) . '/' . str_replace( dirname(__FILE__) , '', $file);
+		}
+		
+	 function appFail($message = 'Request Failed', $response = null)
+	{
+		//bad request: fail
+		
+		if (!$response) $response = array();
+
+		$response['error'] = $message;
+
+		$response['VideoWhisper'] = 'https://videowhisper.com';
+
+		echo json_encode($response);
+
+		die();
+	}
+	
 	
 	 function appSfx()
 	{
@@ -208,7 +229,7 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 	$room['streamUID'] = intval($room['performerID']);
 	$room['streamPlayback'] = appStream($room['performerID'], $roomID, $options);
 
-	$room['actionPrivate'] = !$isPerformer;
+	//$room['actionPrivate'] = !$isPerformer;
 	$room['actionPrivateClose'] = false;
 	$room['privateUID'] = 0;
 
@@ -229,7 +250,7 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 		}
 
 	
-	if ($options['videochatNext']) if (!$isPerformer) $room['next'] = true;
+	//if ($options['videochatNext']) if (!$isPerformer) $room['next'] = true;
 
 			if ($welcome) $room['welcome'] .= "\n" . $welcome;
 
