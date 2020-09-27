@@ -1,4 +1,4 @@
-## PHP-HTML5-Videochat / Live Streaming
+## PHP-HTML5-Videochat / Live Streaming - Standalone PHP
 
 [Live Demo: PHP HTML5 Videochat / Live Streaming: Broadcast & Playback](https://demo.videowhisper.com/html5-videochat-php/)
 
@@ -30,10 +30,11 @@ For a complete implementation of advanced capabilities, see [Turnkey HTML5 Video
  * [ ] random videochat with Next button to move to different performer room
  * [ ] live wallet balance display (updates from tips and other transfers)
  * [ ] tips with multiple customizable options, gift images
+ 
 Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
 
 ## Installation Instructions
- * Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including for a HTML5 WebRTC streaming relay. Production implementations should also involve Session Control. 
+Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including for a HTML5 WebRTC streaming relay. Production implementations should also involve Session Control. 
   
  1. If you don't use a [turnkey webrtc relay streaming hosting](https://webrtchost.com/hosting-plans/), configure WebRTC and SSL with Wowza SE.
  2. Deploy files to your web installation location. (Example: yoursite.domain/html5-videochat/)
