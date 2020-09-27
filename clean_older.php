@@ -37,7 +37,7 @@ $delete_this = 1;
 	{
 	global $old;
 	
-	echo "<div class='ui segment'><smal>Cleaning up old log files ...";
+	echo "<div class='ui segment'><small>Cleaning up old files ...";
 	$k=0;
 	$handle=opendir($dir);
 		while (($file = readdir($handle))!==false) 

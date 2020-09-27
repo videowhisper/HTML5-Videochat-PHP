@@ -1,37 +1,36 @@
-# PHP-HTML5-Videochat / Live Streaming
+## PHP-HTML5-Videochat / Live Streaming
 
-[PHP HTML5 Videochat / Live Streaming: Broadcast & Playback](https://videowhisper.com/demos/html5-videochat/)
+[Live Demo: PHP HTML5 Videochat / Live Streaming: Broadcast & Playback](https://demo.videowhisper.com/html5-videochat-php/)
 
 ![PHP Live Streaming Webcam](/snapshots/h5a-playback.jpg)
 
 
 Before installing, test the simple setup in the live demo:
-[PHP HTML5 Videochat - Live Demo](https://videowhisper.com/demos/html5-videochat/)
+[PHP HTML5 Videochat - Live Demo](https://demo.videowhisper.com/html5-videochat-php/)
 
 This plain php edition includes code and minimal scripts tp embed a HTML5 Videochat app and test/showcase some features. This edition is for integrating/using application with own scripts/framework.
 This edition showcases streaming from 1 broadcaster to multiple viewers and chat.
 For a complete implementation of advanced capabilities, see [Turnkey HTML5 Videochat Site](https://paidvideochat.com/html5-videochat/) edition, available as WordPress plugin with full php source. The turnkey site edition implements pay per minute videochat (group and private 2 way video calls) with membership, billing, advanced tools.
 
-## Simple PHP Edition Features: Live Streaming: Broadcast & Playback
- * Automatically create a room as broadcaster on access and show link to invite participants that will access as viewers
- * Broadcast and playback live video using HTML5 WebRTC
- * Simple implementation of signaling broadcast (to connect automatically) and text chat, using plain files
+### Simple PHP Edition Features: Live Streaming: Broadcast & Playback
+ * [x] Automatically create a room as broadcaster on access and show link to invite participants that will access as viewers
+ * [x] Embed app to broadcast and playback live video using HTML5 WebRTC
+ * [x] Simple implementation of signaling broadcast (to connect automatically) and text chat, using plain files
  
-
-##  Key Features for HTML5 Videochat / Live Streaming: Broadcast & Playback
+###  Key Features for HTML5 Videochat / Live Streaming: Broadcast & Playback
+ * [x] 1 way to many live video streaming, in public lobby
+ * [x] video/audio recorder, emoticons, mentions in text chat
+ * [x] WebRTC relayed streaming (reliable and scalable to many clients from streaming server, independent of broadcaster upload connection)\
+ * [x] fullscreen for videochat interface or playback video
+ * [x] adaptive target video bitrate (depending on cam resolution) and configuration in resolution change
+ * [x] broadcasting/playback stats (open controls and stats should show in few seconds)
+ * [x] dark mode / lights on: each user can toggle interface mode live at runtime, SFX (sound effects)
+ * [x] translation and text change support
+ * [ ] request private 2 way calls / shows from group chat
+ * [ ] random videochat with Next button to move to different performer room
+ * [ ] live wallet balance display (updates from tips and other transfers)
+ * [ ] tips with multiple customizable options, gift images
 Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
- * 1 way to many live video streaming, in public lobby
- * audio recorder, emoticons, mentions in text chat
- * WebRTC relayed streaming (reliable and scalable to many clients from streaming server, independent of broadcaster upload connection)
- * random videochat with Next button to move to different performer room
- * fullscreen for videochat interface or playback video
- * adaptive target video bitrate (depending on cam resolution) and configuration in resolution change
- * broadcasting/playback stats (open controls and stats should show in few seconds)
- * dark mode / lights on: each user can toggle interface mode live at runtime
- * Sfx (sound effects)
- * live wallet balance display (updates from tips and other transfers)
- * tips with multiple customizable options, gift images
- * translation support
 
 ## Installation Instructions
  * Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including for a HTML5 WebRTC streaming relay. Production implementations should also involve Session Control. 
@@ -59,9 +58,17 @@ Scripts also contain comments for clarifications/suggestions.
 This is a simple setup showcasing easy app deployment and integration with other PHP scripts. 
 For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrtchost.com/hosting-plans/) that include requirements for all features and free installation.
 
-For assistance and clarifications, [Contact VideoWhisper Support](https://videowhisper.com/tickets_submit.php).
+### VideoWhisper HTML5 Project Demos
+ * [Video Call - HTML5 Videochat - Standalone](https://demo.videowhisper.com/videocall-html5-videochat-php/)
+ * [Live Streaming - HTML5 Videochat - Standalone](https://demo.videowhisper.com/html5-videochat-php/)
+ * [Cam/Mic Recorder HTML5 - Standalone](https://demo.videowhisper.com/cam-recorder-html5-video-audio/)
+ * [PaidVideochat Turnkey Site](https://paidvideochat.com/demo/)
 
-
-For a more advanced setup, see this turnkey site solution based on WP: 
-[HTML5 Paid Videochat Site Software](https://paidvideochat.com/html5-videochat/) 
+ ### VideoWhisper HTML5 Project Downloads
+ * [Video Call - HTML5 Videochat - GitHub](https://github.com/videowhisper/VideoCall-HTML5-Videochat-PHP)
+ * [Live Streaming - HTML5 Videochat - GitHub](https://github.com/videowhisper/HTML5-Videochat-PHP)
+ * [Cam/Mic Recorder HTML5 - GitHub](https://github.com/videowhisper/Cam-Recorder-HTML5-Video-Audio)
+ * [PaidVideochat Turnkey Site - WordPress](https://wordpress.org/plugins/ppv-live-webcams/)
+ 
+For a free consultation, [Contact VideoWhisper Technical Support](https://videowhisper.com/tickets_submit.php).
 
