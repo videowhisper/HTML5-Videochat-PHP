@@ -182,12 +182,12 @@ case 'message':
 	$messageUserAvatar = filter_var( $message['userAvatar'], FILTER_SANITIZE_URL);
 
 	$meta = array(
-		'notification'=>$message['notification'],
+		'notification'=>  filter_var($message['notification'],FILTER_SANITIZE_STRING),
 		'userAvatar' => $messageUserAvatar,
 		'mentionMessage' => intval($message['mentionMessage']),
-		'mentionUser'=> sanitize_text_field($message['mentionUser'])
+		'mentionUser'=> $messageText
 	);
-	$metaS = esc_sql(serialize($meta));
+	$metaS = serialize($meta);
 
 	if (!$privateUID)  $privateUID = 0; //public room
 
