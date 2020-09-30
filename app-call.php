@@ -59,7 +59,7 @@ if ($task == 'login')
 	'videoBitrate' =>  $options['webrtcVideoBitrate'],
 	'audioBitrate' =>  $options['webrtcAudioBitrate'],
 	'audioCodec' =>  $options['webrtcAudioCodec'],
-	'autoBroadcast' => false,
+//	'autoBroadcast' => false,
 	'actionFullscreen' => true,
 	'actionFullpage' => false,
 
@@ -83,12 +83,12 @@ if ($task == 'login')
 
 				if (VW_DEVMODE)
 				{
-					$response['config']['cameraAutoBroadcast'] = '0';
-					$response['config']['videoAutoPlay '] = '0';
+				//	$response['config']['cameraAutoBroadcast'] = '0';
+				//	$response['config']['videoAutoPlay '] = '0';
 
 				}
 
-			if (!$isPerformer) $response['config']['cameraAutoBroadcast'] = '0';
+			//if (!$isPerformer) $response['config']['cameraAutoBroadcast'] = '0';
 
 }
 //end: task==login
@@ -185,10 +185,10 @@ case 'message':
 		'notification'=>  filter_var($message['notification'],FILTER_SANITIZE_STRING),
 		'userAvatar' => $messageUserAvatar,
 		'mentionMessage' => intval($message['mentionMessage']),
-		'mentionUser'=> $messageText
+		'mentionUser'=> filter_var($message['mentionUser'],FILTER_SANITIZE_STRING),
 	);
 	$metaS = serialize($meta);
-
+	
 	if (!$privateUID)  $privateUID = 0; //public room
 
 	$messages = arrayLoad($roomID . '_messages');
