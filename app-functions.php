@@ -235,19 +235,21 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 
 	$room['actionID'] = 0;
 
-	$room['welcome'] = sprintf('Welcome to public room "%s", user #%s!', $room['name'] , $userID);
+	$room['welcome'] = ' 💬 ' . sprintf('Welcome to public room "%s", user #%s!', $room['name'] , $userID);
 	$room['welcomeImage'] = VW_H5V_URL . 'images/chat.png';
 
 
 
 	if ($isPerformer) //member: performer
 		{
-		$room['welcome'] .= "\n". 'You are room owner / performer.';
+		$room['welcome'] .= "\n 📡 ". 'You are broadcaster (room owner/performer). Use best network available if you have the option: 5GHz on WiFi instead of 2.4 GHz, LTE/4G on mobile instead of 3G, wired instead of wireless. ';
 	}
 	else //member: client
 		{
-		$room['welcome'] .= "\n".'You are invited participant.';
+		$room['welcome'] .= "\n 👤 ".'You are invited participant.';
 		}
+		
+		
 
 	
 	//if ($options['videochatNext']) if (!$isPerformer) $room['next'] = true;
@@ -267,6 +269,15 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 					$room['tipsURL'] = VW_H5V_URL . 'tips/';
 				}
 			}
+			
+			//demo goal
+			
+				$room['welcome'] .= "\n 🎁 " . 'Current gifts goal' .': '. 'Demo Goal';
+						$room['welcome'] .= "\n - " . 'Goal description' .': ' . 'Chat can display goals that can be achieved with gifts/donations.';
+
+						$room['welcomeProgressValue'] = 8;
+						$room['welcomeProgressTotal'] = 10;
+						$room['welcomeProgressDetails'] =  'Demo Goal';	
 
 		//offline snapshot (poster) and video 
 		$room['snapshot'] = VW_H5V_URL . 'images/no-picture.png';
