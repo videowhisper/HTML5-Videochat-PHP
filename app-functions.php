@@ -270,14 +270,12 @@ function appPublicRoom($roomID, $userID, $options, $welcome ='')
 				}
 			}
 			
-			//demo goal
-			
-				$room['welcome'] .= "\n 🎁 " . 'Current gifts goal' .': '. 'Demo Goal';
-						$room['welcome'] .= "\n - " . 'Goal description' .': ' . 'Chat can display goals that can be achieved with gifts/donations.';
-
-						$room['welcomeProgressValue'] = 8;
-						$room['welcomeProgressTotal'] = 10;
-						$room['welcomeProgressDetails'] =  'Demo Goal';	
+			//demo goal	
+			$room['welcome'] .= "\n 🎁 " . 'Current gifts goal' .': '. 'Demo Goal';
+			$room['welcome'] .= "\n - " . 'Goal description' .': ' . 'Chat can display goals that can be achieved with gifts/donations.';
+			$room['welcomeProgressValue'] = 8;
+			$room['welcomeProgressTotal'] = 10;
+			$room['welcomeProgressDetails'] =  'Demo Goal';	
 
 		//offline snapshot (poster) and video 
 		$room['snapshot'] = VW_H5V_URL . 'images/no-picture.png';

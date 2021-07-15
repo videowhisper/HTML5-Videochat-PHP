@@ -10,19 +10,6 @@ object-assign
   All rights reserved.
 */
 
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
 /**
  * @license
  * Lodash <https://lodash.com/>
@@ -336,6 +323,15 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /** @license React v16.14.0
  * react-dom.production.min.js
  *
@@ -346,7 +342,7 @@ object-assign
  */
 
 /** @license React v16.14.0
- * react.production.min.js
+ * react-jsx-runtime.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
@@ -354,8 +350,8 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v16.8.6
- * react-is.production.min.js
+/** @license React v16.14.0
+ * react.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
