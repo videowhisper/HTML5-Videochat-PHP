@@ -19,8 +19,10 @@ For a complete implementation of advanced capabilities, see [Turnkey HTML5 Video
  
 ###  Key Features for HTML5 Videochat / Live Streaming: Broadcast & Playback
  * [x] 1 way to many live video streaming, in public lobby
+ * [x] WebRTC relayed streaming (reliable and scalable to many clients from Wowza SE streaming server, independent of broadcaster upload connection)
+ * [x] select camera, microphone, resolution, bitrate
+ * [x] screen sharing toggle, with microphone track mixed
  * [x] video/audio recorder, emoticons, mentions in text chat
- * [x] WebRTC relayed streaming (reliable and scalable to many clients from streaming server, independent of broadcaster upload connection)\
  * [x] fullscreen for videochat interface or playback video
  * [x] adaptive target video bitrate (depending on cam resolution) and configuration in resolution change
  * [x] broadcasting/playback stats (open controls and stats should show in few seconds)
@@ -34,7 +36,7 @@ For a complete implementation of advanced capabilities, see [Turnkey HTML5 Video
 Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
 
 ## Installation Instructions
-Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including for a HTML5 WebRTC streaming relay. Production implementations should also involve Session Control. 
+Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including the Wowza SE as HTML5 WebRTC streaming relay. Production implementations should also involve Session Control for security and website integration (like list of live channels).
   
  1. If you don't use a [turnkey webrtc relay streaming hosting](https://webrtchost.com/hosting-plans/), configure WebRTC and SSL with Wowza SE.
  2. Deploy files to your web installation location. (Example: yoursite.domain/html5-videochat/)

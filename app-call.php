@@ -89,6 +89,8 @@ if ($task == 'login')
 				}
 
 			//if (!$isPerformer) $response['config']['cameraAutoBroadcast'] = '0';
+			
+	$response['config']['loaded'] = true;
 
 }
 //end: task==login
