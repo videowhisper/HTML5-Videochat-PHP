@@ -1,12 +1,14 @@
 ## PHP-HTML5-Videochat / Live Streaming - Standalone PHP
 
-[Live Demo: PHP HTML5 Videochat / Live Streaming: Broadcast & Playback](https://demo.videowhisper.com/html5-videochat-php/)
+
+### Live Demos for PHP Live Streaming / HTML5 Videochat : Broadcast & Playback Live Video
+[HTML5 Live Video Streaming using WowzaSE](https://demo.videowhisper.com/html5-videochat-php/)
+[HTML5 Live Video Streaming using VideoWhisper WebRTC](https://demo.videowhisper.com/vws-html5-livestreaming/)
 
 ![PHP Live Streaming Webcam](/snapshots/h5a-playback.jpg)
 
 
-Before installing, test the simple setup in the live demo:
-[PHP HTML5 Videochat - Live Demo](https://demo.videowhisper.com/html5-videochat-php/)
+Before installing, test the simple setup in the live demos above.
 
 This edition showcases streaming from 1 broadcaster to multiple viewers and chat.
 This plain php edition includes code and minimal scripts to embed a HTML5 Videochat app and test/showcase some features. This edition is for integrating/using application with own scripts/framework.
@@ -36,9 +38,9 @@ For a complete implementation of advanced capabilities, see [Turnkey HTML5 Video
 Warning: some of these features are not active/implemented in this simplified edition, but can be enabled as in turnkey site edition.
 
 ## Installation Instructions
-Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including the Wowza SE as HTML5 WebRTC streaming relay. Production implementations should also involve Session Control for security and website integration (like list of live channels).
+Before installing, make sure your hosting environment meets all [requirements](https://videowhisper.com/?p=Requirements) including the Wowza SE as HTML5 WebRTC streaming relay and/or the [VideoWhisper WebRTC signaling server](https://github.com/videowhisper/videowhisper-webrtc/). Production implementations should also involve Session Control for security and website integration (like list of live channels).
   
- 1. If you don't use a [turnkey webrtc relay streaming hosting](https://webrtchost.com/hosting-plans/), configure WebRTC and SSL with Wowza SE.
+ 1. If you don't use a [turnkey webrtc relay streaming host](https://webrtchost.com/hosting-plans/), configure WebRTC and SSL with Wowza SE or the VideoWhisper WebRTC server.
  2. Deploy files to your web installation location. (Example: yoursite.domain/html5-videochat/)
  3. Fill your streaming settings in settings.php file
  4. If you don't have SuPHP, enable write permissions (0777) for folder "uploads", required to save session and chat info.
@@ -62,8 +64,10 @@ This is a simple setup showcasing easy app deployment and integration with other
 For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrtchost.com/hosting-plans/) that include requirements for all features and free installation.
 
 ### VideoWhisper HTML5 Project Demos
- * [Video Call - HTML5 Videochat - Standalone](https://demo.videowhisper.com/videocall-html5-videochat-php/)
- * [Live Streaming - HTML5 Videochat - Standalone](https://demo.videowhisper.com/html5-videochat-php/)
+ * [Video Call PHP / HTML5 Videochat on Wowza SE](https://demo.videowhisper.com/videocall-html5-videochat-php/)
+ * [Video Call PHP / HTML5 Videochat on VideoWhisper WebRTC](https://demo.videowhisper.com/p2p-html5-videocall/)
+ * [Live Streaming PHP / HTML5 Videochat on Wowza SE](https://demo.videowhisper.com/html5-videochat-php/)
+ * [Live Streaming PHP / HTML5 Videochat on VideoWhisper WebRTC](https://demo.videowhisper.com/vws-html5-livestreaming/)
  * [Cam/Mic Recorder HTML5 - Standalone](https://demo.videowhisper.com/cam-recorder-html5-video-audio/)
  * [PaidVideochat Turnkey Site](https://paidvideochat.com/demo/)
 
@@ -72,6 +76,7 @@ For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrt
  * [Live Streaming - HTML5 Videochat - GitHub](https://github.com/videowhisper/HTML5-Videochat-PHP)
  * [Cam/Mic Recorder HTML5 - GitHub](https://github.com/videowhisper/Cam-Recorder-HTML5-Video-Audio)
  * [PaidVideochat Turnkey Site - WordPress](https://wordpress.org/plugins/ppv-live-webcams/)
- 
-For a free consultation, [Contact VideoWhisper Technical Support](https://videowhisper.com/tickets_submit.php).
+ * [VideoWhisper WebRTC](https://github.com/videowhisper/videowhisper-webrtc/)
+
+For a free consultation [Consult VideoWhisper](https://consult.videowhisper.com) or [Submit Ticket](https://videowhisper.com/tickets_submit.php) related to commercial services like turnkey platforms, compatible hosting, custom development services.
 

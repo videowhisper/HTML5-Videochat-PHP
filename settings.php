@@ -1,12 +1,16 @@
 <?php
 
-//Required Streaming Settings in $options : wsURLWebRTC, applicationWebRTC
+//A server is required for WebRTC: VideoWhisper + a TURN server or Wowza Streaming Engine
 //See https://videowhisper.com/?p=Requirements or get a turnkey streaming plan from https://webrtchost.com/hosting-plans/ 
 
 $options = array(
-	'wsURLWebRTC' => 'wss://-server-id-.streamlock.net:1937/webrtc-session.json', // * Required
-	'applicationWebRTC' => '-application-name-', // * Required
-
+	'serverType' => 'videowhisper', // videowhisper/wowza 
+	'vwsSocket' => 'wss://[videowhisper-server]:[port]',
+	'vwsToken' => 'server-token',
+						
+	'wsURLWebRTC' => 'wss://-server-id-.streamlock.net:1937/webrtc-session.json', 
+	'applicationWebRTC' => '-application-name-', 
+	
 	'webrtcVideoCodec' =>'VP8',
 	'webrtcAudioCodec' =>'opus',
 
