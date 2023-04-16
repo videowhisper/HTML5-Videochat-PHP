@@ -69,7 +69,8 @@ $bodyCode .= '</div>';
 <br> + All Plain PHP Demos: <a href="https://demo.videowhisper.com/p2p-html5-videocall/">P2P Video Call</a> | <a href="https://demo.videowhisper.com/videocall-html5-videochat-php/">Video Call on Wowza SE</a> | <a href="https://demo.videowhisper.com/html5-videochat-php/">Live Streaming on Wowza SE</a> | <a href="https://demo.videowhisper.com/vws-html5-livestreaming/">Live Streaming on VideoWhisper WebRTC</a>  | <a href="https://demo.videowhisper.com/cam-recorder-html5-video-audio/">Cam/Mic Recorder</a>
 <br> + Compatible hosting for all features including live streaming servers and video tools: <a href="https://webrtchost.com/hosting-plans/">WebRTC Host on Wowza SE</a> (recommended)
 <br> + Server GitHub: <a href="https://github.com/videowhisper/videowhisper-webrtc">VideoWhisper WebRTC signaling server</a> (NodeJS, supports using STUN/TURN serverlike CoTURN)
-<br> + Technical support: <a href="https://videowhisper.com/tickets_submit.php">VideoWhisper.com</a>
+<br> + For testing, get a Free plan from <a href="https://webrtchost.com/hosting-plans/#WebRTC-Only">WebRTC Host: P2P</a>.
+<br> + Technical support: <a href="https://consult.videowhisper.com">Consult VideoWhisper</a> or <a href="https://videowhisper.com/tickets_submit.php">Submit Ticket</a>
 <br> + Turnkey Cam Site Solution: <a href="https://paidvideochat.com/html5-videochat/">Turnkey HTML5 Videochat Site</a> - Advanced capabilities (including video conferencing, collaboration, tips, pay per minute, advanced tabbed interface, 2 way videocalls / shows requested from group broadcast), available as WordPress plugin with full php source.
 
 
