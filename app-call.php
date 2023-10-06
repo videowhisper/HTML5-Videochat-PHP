@@ -47,7 +47,6 @@ if ($task == 'login')
 
 	//on login check if any private request was active to restore
 	//return private room/session if active, depending on integration
-
 	$response['room'] = appPublicRoom($roomID, $userID, $options, 'Login success!');
 
 	//config params, const
@@ -63,6 +62,10 @@ if ($task == 'login')
 	'videoBitrate' =>  $options['webrtcVideoBitrate'],
 	'audioBitrate' =>  $options['webrtcAudioBitrate'],
 	'audioCodec' =>  $options['webrtcAudioCodec'],
+	
+	'snapshotInterval' => 180,
+	'snapshotDisable' => true,
+	
 //	'autoBroadcast' => false,
 	'actionFullscreen' => true,
 	'actionFullpage' => false,
