@@ -54,7 +54,7 @@ if ($task == 'login')
 	'serverType' => $options['serverType'],
 	'vwsSocket' => $options['vwsSocket'],
 	'vwsToken' => $options['vwsToken'],
-	
+
 	'wss' => $options['wsURLWebRTC'],
 	'application' => $options['applicationWebRTC'],
 
@@ -62,15 +62,16 @@ if ($task == 'login')
 	'videoBitrate' =>  $options['webrtcVideoBitrate'],
 	'audioBitrate' =>  $options['webrtcAudioBitrate'],
 	'audioCodec' =>  $options['webrtcAudioCodec'],
-	
+
 	'snapshotInterval' => 180,
 	'snapshotDisable' => true,
-	
+
 //	'autoBroadcast' => false,
 	'actionFullscreen' => true,
 	'actionFullpage' => false,
 
 	'serverURL' =>  VW_H5V_CALL,
+	'modeVersion' => '',
 
 	];
 
@@ -96,7 +97,7 @@ if ($task == 'login')
 				}
 
 			//if (!$isPerformer) $response['config']['cameraAutoBroadcast'] = '0';
-			
+
 	$response['config']['loaded'] = true;
 
 }
@@ -133,6 +134,8 @@ $needUpdate = array();
 //process app task (other than login)
 switch ($task)
 {
+case 'snapshot':
+	break;
 
 case 'login':
 	break;
@@ -142,7 +145,7 @@ case 'tick':
 
 case 'options':
 	break;
-	
+
 case 'update':
 	//something changed - let everybody know : update room
 	$update = filter_var($_POST['update'], FILTER_SANITIZE_STRING);
@@ -197,7 +200,7 @@ case 'message':
 		'mentionUser'=> filter_var($message['mentionUser'],FILTER_SANITIZE_STRING),
 	);
 	$metaS = serialize($meta);
-	
+
 	if (!$privateUID)  $privateUID = 0; //public room
 
 	$messages = arrayLoad($roomID . '_messages');

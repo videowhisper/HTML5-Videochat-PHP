@@ -8,7 +8,7 @@ include_once('settings.php');
 
 $roomID = intval($_GET['r']);
 
-if (!$roomID) 
+if (!$roomID)
 {
 $roomID = rand(9000, 9999);
 $isPerformer = 1;
@@ -23,11 +23,11 @@ $isPerformer = 0;
 $sessionID = $userID;
 $sessionKey = $userID;
 
-//setcookie('userID', $userID); 
+//setcookie('userID', $userID);
 
 
 //embed the app: all integrations should contain this part
-$dataCode .= "window.VideoWhisper = {userID: $userID, sessionID: $sessionID, sessionKey: '$sessionKey', roomID: $roomID, performer: $isPerformer, serverURL: '" . VW_H5V_CALL . "'}";
+$dataCode .= "window.VideoWhisper = {userID: $userID, sessionID: $sessionID, sessionKey: '$sessionKey', roomID: $roomID, performer: $isPerformer, serverURL: '" . VW_H5V_CALL . "', modeVersion: ''}";
 
 $bodyCode .= <<<HTMLCODE
 <!--VideoWhisper.com - HTML5 Videochat web app - uid:$userID p:$isPerformer s:$sessionID-->
@@ -67,16 +67,14 @@ $bodyCode .= '</div>';
 <br> + Official Live Demo for Live Streaming / HTML5 Videochat Standalone PHP: <a href="https://demo.videowhisper.com/html5-videochat-php/">Live Streaming on WowzaSE</a> | <a href="https://demo.videowhisper.com/vws-html5-livestreaming/">Live Streaming on VideoWhisper WebRTC</a>
 <br> + Download from GitHub:  <a href="https://github.com/videowhisper/HTML5-Videochat-PHP">Live Streaming / HTML5 Videochat PHP </a>
 <br> + All Plain PHP Demos: <a href="https://demo.videowhisper.com/p2p-html5-videocall/">P2P Video Call</a> | <a href="https://demo.videowhisper.com/videocall-html5-videochat-php/">Video Call on Wowza SE</a> | <a href="https://demo.videowhisper.com/html5-videochat-php/">Live Streaming on Wowza SE</a> | <a href="https://demo.videowhisper.com/vws-html5-livestreaming/">Live Streaming on VideoWhisper WebRTC</a>  | <a href="https://demo.videowhisper.com/cam-recorder-html5-video-audio/">Cam/Mic Recorder</a>
-<br> + Compatible hosting for all features including live streaming servers and video tools: <a href="https://webrtchost.com/hosting-plans/">WebRTC Host on Wowza SE</a> (recommended)
 <br> + Server GitHub: <a href="https://github.com/videowhisper/videowhisper-webrtc">VideoWhisper WebRTC signaling server</a> (NodeJS, supports using STUN/TURN serverlike CoTURN)
 <br> + For testing, get a Free plan from <a href="https://webrtchost.com/hosting-plans/#WebRTC-Only">WebRTC Host: P2P</a>.
-<br> + Technical support: <a href="https://consult.videowhisper.com">Consult VideoWhisper</a> or <a href="https://videowhisper.com/tickets_submit.php">Submit Ticket</a>
-<br> + Turnkey Cam Site Solution: <a href="https://paidvideochat.com/html5-videochat/">Turnkey HTML5 Videochat Site</a> - Advanced capabilities (including video conferencing, collaboration, tips, pay per minute, advanced tabbed interface, 2 way videocalls / shows requested from group broadcast), available as WordPress plugin with full php source.
-
-
+<br> + By default application starts in demo mode, for free testing with low resources by site visitors.
+<br> + Technical support & turnkey site plans: <a href="https://consult.videowhisper.com">Consult VideoWhisper</a>
+<br> + Turnkey Cam Site Solution as WP plugins: <a href="https://paidvideochat.com/html5-videochat/">Turnkey HTML5 Videochat Site</a>.
 </div>
 
-<?php 
+<?php
 	include_once('clean_older.php')
 ?>
 </body>
