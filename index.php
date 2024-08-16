@@ -6,7 +6,7 @@ include_once('settings.php');
 //access existing room or create a new one as performer
 //all IDs generated randomly for demonstrative purposes; on integrations should be from database
 
-$roomID = intval($_GET['r']);
+$roomID = intval($_GET['r'] ?? 0);
 
 if (!$roomID)
 {
@@ -27,9 +27,9 @@ $sessionKey = $userID;
 
 
 //embed the app: all integrations should contain this part
-$dataCode .= "window.VideoWhisper = {userID: $userID, sessionID: $sessionID, sessionKey: '$sessionKey', roomID: $roomID, performer: $isPerformer, serverURL: '" . VW_H5V_CALL . "', modeVersion: ''}";
+$dataCode = "window.VideoWhisper = {userID: $userID, sessionID: $sessionID, sessionKey: '$sessionKey', roomID: $roomID, performer: $isPerformer, serverURL: '" . VW_H5V_CALL . "', modeVersion: ''}";
 
-$bodyCode .= <<<HTMLCODE
+$bodyCode = <<<HTMLCODE
 <!--VideoWhisper.com - HTML5 Videochat web app - uid:$userID p:$isPerformer s:$sessionID-->
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div style="display:block;min-height:600px;background-color:#eee;position:relative;z-index:102!important;"><div style="display:block;width:100%; height:100%; position:absolute;z-index:102!important;" id="videowhisperVideochat"></div></div>
@@ -37,7 +37,7 @@ $bodyCode .= <<<HTMLCODE
 HTMLCODE;
 
 //app requires semantic ui
-$headCode .= '<link href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet" type="text/css">';
+$headCode = '<link href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet" type="text/css">';
 
 //app css & js
 $CSSfiles = scandir(dirname(  __FILE__ ) . '/static/css/');

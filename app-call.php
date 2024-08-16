@@ -9,15 +9,15 @@ include_once 'settings.php';
 include_once 'app-functions.php';
 
 //session info received trough VideoWhisper POST var
-if ($VideoWhisper = $_POST['VideoWhisper'])
+if ($VideoWhisper = $_POST['VideoWhisper'] )
 {
 	$userID = intval($VideoWhisper['userID']);
 	$sessionID = intval($VideoWhisper['sessionID']);
 	$roomID = intval($VideoWhisper['roomID']);
 	$sessionKey = intval($VideoWhisper['sessionKey']);
 
-	$privateUID = intval($VideoWhisper['privateUID']);
-	$roomActionID = intval($VideoWhisper['roomActionID']);
+	$privateUID = intval($VideoWhisper['privateUID'] ?? 0);
+	$roomActionID = intval($VideoWhisper['roomActionID'] ?? 0);
 }
 
 $response['VideoWhisper'] = 'https://videowhisper.com';
@@ -364,8 +364,8 @@ default:
 
 
 //update time
-$lastMessage = intval($_POST['lastMessage']);
-$lastMessageID = intval($_POST['lastMessageID']);
+$lastMessage = intval($_POST['lastMessage'] ?? 0);
+$lastMessageID = intval($_POST['lastMessageID'] ?? 0);
 
 //retrieve only messages since user came online / updated
 $sdate = 0;
@@ -391,7 +391,7 @@ ksort($messages);
 
 
 $items = array();
-
+$idMax = 0;
 
 
 foreach ($messages as $key => $message)
