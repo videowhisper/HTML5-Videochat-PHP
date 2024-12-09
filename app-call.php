@@ -439,7 +439,7 @@ foreach ($messages as $key => $message)
 			$meta = unserialize($message['meta']);
 			foreach ($meta as $key=>$value) $item[$key] = $value;
 
-			$item['notification'] =  ($meta['notification'] == 'true'?true:false);
+			$item['notification'] =  (isset($meta['notification']) && $meta['notification'] == 'true' ? true : false );
 		}
 
 		if ($message['type'] == 3) $item['notification'] = true;
