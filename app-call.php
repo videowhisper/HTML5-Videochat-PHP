@@ -8,28 +8,24 @@ include_once 'settings.php';
 
 include_once 'app-functions.php';
 
-//session info received trough VideoWhisper POST var
-if ($VideoWhisper = $_POST['VideoWhisper'] )
-{
-	$userID = intval($VideoWhisper['userID']);
-	$sessionID = intval($VideoWhisper['sessionID']);
-	$roomID = intval($VideoWhisper['roomID']);
-	$sessionKey = intval($VideoWhisper['sessionKey']);
-
-	$privateUID = intval($VideoWhisper['privateUID'] ?? 0);
-	$roomActionID = intval($VideoWhisper['roomActionID'] ?? 0);
-}
-
-$response['VideoWhisper'] = 'https://videowhisper.com';
-
-
-$task = $_POST['task'];
-
-
-if ($task != 'login')
-{
-	//verify user login, session validty
-}
+require_once __DIR__ . '/demo-security.php';
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+header('X-Content-Type-Options: nosniff');
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') demo_json(['error'=>'POST required.'], 405);
+$VideoWhisper = $_POST['VideoWhisper'] ?? null;
+if (!is_array($VideoWhisper)) demo_json(['error'=>'Session required.'], 403);
+$proof = demo_validate_request($VideoWhisper);
+$userID = $proof['user']; $sessionID = $proof['session'];
+$roomID = (int)$VideoWhisper['roomID']; $sessionKey = $proof['key'];
+$isPerformer = $proof['owner']; $privateUID = 0; $roomActionID = 0;
+$response = ['VideoWhisper'=>'https://videowhisper.com'];
+$task = is_string($_POST['task'] ?? null) ? $_POST['task'] : '';
+$userName = (($userID>10000)?'Performer':'User') . $userID;
+if ($task === 'socket_auth') demo_json(['vwsAuth'=>demo_pin($userName, $options)]);
+// Serialize each room's read/modify/write chat updates across browser sessions.
+$roomLock = fopen(demo_state_dir() . '/' . $roomID . '.lock', 'c');
+if (!$roomLock || !flock($roomLock, LOCK_EX)) demo_json(['error'=>'Room unavailable.'], 503);
 
 if ($task == 'login')
 {
@@ -39,6 +35,7 @@ if ($task == 'login')
 	'ID'=> intval($userID),
 	'name'=> (($userID>10000)?'Performer':'User') . $userID,
 	'sessionID'=> intval($sessionID),
+	'sessionKey'=> $sessionKey,
 	'loggedIn' => true,
 	'balance' => 100,
 	'avatar' => VW_H5V_URL .'images/avatar.png',
@@ -53,7 +50,7 @@ if ($task == 'login')
 	$response['config'] = [
 	'serverType' => $options['serverType'],
 	'vwsSocket' => $options['vwsSocket'],
-	'vwsToken' => $options['vwsToken'],
+	'vwsAuth' => ['account'=>$options['vwsAccount'] ?? ''],
 
 	'wss' => $options['wsURLWebRTC'],
 	'application' => $options['applicationWebRTC'],
@@ -120,6 +117,7 @@ else $session = array(
 		'madeBy' => 'access',
 	);
 
+$session['username'] = $userName;
 $session['edate'] = time();
 
 $sessions[$sessionID] = $session;
@@ -148,7 +146,7 @@ case 'options':
 
 case 'update':
 	//something changed - let everybody know : update room
-	$update = filter_var($_POST['update'], FILTER_SANITIZE_STRING);
+	$update = filter_var($_POST['update']);
 
 
 	$room = arrayLoad($roomID . '_room');
@@ -163,11 +161,12 @@ case 'media':
 
 	$connected = ($_POST['connected'] == 'true'?true:false);
 
-	if ($session['meta'])
-		if (!is_array($userMeta = unserialize($session['meta']))) $userMeta = array();
+	if ($session['meta'] ?? false)
+		if (!is_array($userMeta = unserialize($session['meta'], ['allowed_classes'=>false]))) $userMeta = array();
 
 		$userMeta['connected'] = $connected;
-	$userMeta['connectedUpdate'] = time();
+	$userMeta['connectedUpdate'] = microtime(true);
+	$userMeta['externalUpdate'] = 0;
 
 	$userMetaS = serialize($userMeta);
 
@@ -189,15 +188,15 @@ case 'message':
 		$response['message'] = $message;
 	}
 
-	$messageText = filter_var( $message['text'], FILTER_SANITIZE_STRING);
-	$messageUser = filter_var( $message['userName'], FILTER_SANITIZE_STRING);
-	$messageUserAvatar = filter_var( $message['userAvatar'], FILTER_SANITIZE_URL);
+	$messageText = htmlspecialchars(mb_substr(strip_tags((string)($message['text'] ?? '')), 0, 2000), ENT_QUOTES, 'UTF-8');
+	$messageUser = $userName;
+	$messageUserAvatar = VW_H5V_URL . 'images/avatar.png';
 
 	$meta = array(
-		'notification'=>  filter_var($message['notification'],FILTER_SANITIZE_STRING),
+		'notification'=>  false,
 		'userAvatar' => $messageUserAvatar,
-		'mentionMessage' => intval($message['mentionMessage']),
-		'mentionUser'=> filter_var($message['mentionUser'],FILTER_SANITIZE_STRING),
+		'mentionMessage' => intval($message['mentionMessage'] ?? 0),
+		'mentionUser'=> '',
 	);
 	$metaS = serialize($meta);
 
@@ -230,131 +229,7 @@ case 'message':
 
 
 case 'recorder_upload':
-
-
-	if (!$roomName) appFail('No room for recording.');
-	if (strstr($filename, ".php")) appFail('Bad uploader!');
-
-
-	$mode = $_POST['mode'];   // video/audio
-	$scenario = $_POST['scenario'];  // chat/standalone
-
-	if (!$privateUID)  $privateUID = 0; //public room
-
-	//generate same private room folder for both users
-	if ($privateUID)
-	{
-		if ($isPerformer) $proom = $userID . "_" . $privateUID; //performer id first
-		else $proom = $privateUID ."_". $userID;
-	}
-
-	$destination = 'uploads';
-	if (!file_exists($destination)) mkdir($destination);
-
-	$destination.="/$roomName";
-	if (!file_exists($destination)) mkdir($destination);
-
-	if ($proom)
-	{
-		$destination.="/$proom";
-		if (!file_exists($destination)) mkdir($destination);
-	}
-
-	$response['_FILES'] = $_FILES;
-
-
-	$allowed = array('mp3', 'ogg', 'opus', 'mp4', 'webm', 'mkv');
-
-	$uploads = 0;
-	$filename = '';
-
-	if ($_FILES) if (is_array($_FILES))
-			foreach ($_FILES as $ix => $file)
-			{
-
-				$filename = filter_var( $file['name'], FILTER_SANITIZE_STRING);
-
-				$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-				$response['uploadRecLastExt'] = $ext;
-				$response['uploadRecLastF'] = $filename;
-
-				$filepath = $destination . '/' . $filename;
-
-				if (in_array($ext, $allowed))
-					if (file_exists($file['tmp_name']))
-					{
-						move_uploaded_file($file['tmp_name'], $filepath);
-						$response['uploadRecLast'] = $destination . $filename;
-						$uploads++;
-					}
-			}
-
-		$response['uploadCount'] = $uploads;
-
-
-	if (!file_exists($filepath))
-	{
-		$response['warning'] = 'Recording upload failed!';
-	}
-
-
-
-	if ( !$response['warning'] && $scenario == 'chat' )
-	{
-		$url = path2url($filepath);
-
-		$response['recordingUploadSize'] = filesize($filepath);
-		$response['recordingUploadURL'] = $url;
-
-		$messageText = '';
-		$messageUser = $userName;
-		$userAvatar = VW_H5V_URL .'images/avatar.png';
-		$messageUserAvatar = $userAvatar;
-
-		$meta = array(
-			'userAvatar' => $messageUserAvatar,
-		);
-
-		if ($mode == 'video') $meta['video']= $url;
-		else $meta['audio']= $url;
-
-		$metaS = serialize($meta);
-
-
-		$messages = arrayLoad($roomID . '_messages');
-		$ix = count($messages)+1;
-
-		$messageNew = array(
-			'id' => $ix,
-			'username' => $messageUser,
-			'room' => $roomName,
-			'room_id' => $roomID,
-			'message' => $messageText,
-			'mdate' => $ztime,
-			'type' => 2,
-			'user_id' => $userID,
-			'meta' => $metaS,
-			'private_uid' => $privateUID
-		);
-		$messages[$ix] = $messageNew;
-
-		varSave($roomID . '_messages', $messages);
-
-		$response['messageNew'] = $messageNew;
-
-		//also update chat log file
-		/*
-		if ($roomName)
-		{
-			$messageText = strip_tags($messageText, '<p><a><img><font><b><i><u>');
-			$messageText = date("F j, Y, g:i a", $ztime) . " <b>$userName</b>: $messageText <video controls src='$url'></video>";
-			$day=date("y-M-j", time());
-			$dfile = fopen($destination . "/Log$day.html", "a");
-			fputs($dfile, $messageText."<BR>");
-			fclose($dfile);
-		}
-		*/
-	}
+	$response = array_merge($response, demo_upload($roomName));
 	break;
 
 default:
@@ -436,7 +311,7 @@ foreach ($messages as $key => $message)
 		//meta
 		if ($message['meta'])
 		{
-			$meta = unserialize($message['meta']);
+			$meta = unserialize($message['meta'], ['allowed_classes'=>false]);
 			foreach ($meta as $key=>$value) $item[$key] = $value;
 
 			$item['notification'] =  (isset($meta['notification']) && $meta['notification'] == 'true' ? true : false );
@@ -459,6 +334,9 @@ $response['lastMessageID'] = $idMax;
 
 $response['roomUpdate']['users'] = appRoomUsers($roomID, $options);
 
+
+// Never permit appSetup overrides to expose an account-level credential.
+unset($response['config']['vwsToken'], $response['config']['token']);
 
 //send response to app
 echo json_encode($response);

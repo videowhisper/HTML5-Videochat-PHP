@@ -1,8 +1,31 @@
 ## PHP-HTML5-Videochat / Live Streaming - Standalone PHP
+## November 2026 maintenance update
+
+The bundled HTML5 Videochat app is built from source dated **2026.11.10**. The older recorder remains a compatibility example. For small group meetings use [Video Conference](https://demo.videowhisper.com/video-conference/); for webcam, microphone, screen capture and download-only recording use [the current recorder](https://demo.videowhisper.com/webcam-microphone-screen-recorder/). Neither requires Flash.
+
+PHP 8.2+, Fileinfo, mbstring, HTTPS and PHP sessions are required. The example now validates a random browser session secret for every app request. Room roles come from the server session; knowing a room/user ID does not grant broadcaster access. State is stored outside the web root, and account tokens stay on the PHP host. Chat is bounded and recordings have randomized filenames, MIME/size checks, a 25 MB file limit, 100 MB/20 files per booth and 500 MB total upload quota. This remains a public developer demo, without a member/billing system. Accepted recordings are public to visitors with a booth or file URL; use synthetic test content only.
+
+### Configure before installation
+
+Set `VWH5_SOCKET`, `VWH5_ACCOUNT` and `VWH5_TOKEN` on the PHP host. The account token must never be placed in JavaScript, a public JSON file or this repository. Alternatively set `VWH5_CONFIG` to an operator-owned PHP file **outside the document root** that returns an options array containing `vwsSocket`, `vwsAccount` and `vwsToken`. `settings.php` contains safe defaults, not deployment credentials. Set `VWH5_STORAGE_DIR` to a private directory outside the web root; its default is a per-installation private temporary directory. Protect it with owner-only permissions and use a persistent location on public deployments.
+
+In the streaming account, set the login callback to this installation's HTTPS `socket-auth.php` URL. The callback authenticates the server's private token and checks a five-minute, user-bound PIN. The React client renews through `task=socket_auth` after authenticating the browser session. Configure separate accounts for unrelated installations. `uploads/.htaccess` disables indexes, executable content and access to historical session/chat files; configure equivalent rules on non-Apache hosts. Also configure edge rate/connection limits and PHP `post_max_size`/`upload_max_filesize` consistently with the application limit.
+
+Visitor page views no longer delete files. Schedule `php clean_older.php --days=1` using the PHP account. It deletes only expired randomized recordings created by the new uploader, skips symlinks and preserves historical filenames. Review older media separately before migrating or deleting it.
+
+### Verify and update
+
+Run `python3 tests/smoke.py` before publishing; it starts a loopback PHP fixture with synthetic credentials and private temporary storage. The checks cover sessions, guest/owner access, callback rejection, chat and private state. Then test two browser contexts with fake or consented devices, recording upload/playback where applicable, and the host's HTTPS/TURN configuration. Physical devices and separate networks need manual checks.
+
+Human-readable React source, dependency lockfile and build scripts for the bundled assets are in `source/`. In that directory run `npm ci`, `npm run test:socket-auth`, then `NODE_OPTIONS=--openssl-legacy-provider DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false npm run build`. Replace only generated `static/js`, `static/css` and referenced media, keeping license notices. The legacy CRA build toolchain has known development-only audit findings; never expose its development server publicly. Runtime dependency audit passed on 2026-11-10.
+
+Publishing uses an explicit runtime/source allowlist. Exclude `.env*`, editor/SFTP settings, private configuration, uploads, logs, recordings, tests results and dependency folders. Back up the installed runtime and private configuration first, upload the tested assets and PHP files together, verify the version banner and test login/chat/media, and restore the previous runtime if verification fails. Never synchronize customer recordings or delete historical media during an update.
+
+
 
 ### Live Demos for PHP Live Streaming / HTML5 Videochat : Broadcast & Playback Live Video
 
-[HTML5 Live Video Streaming using WowzaSE relay](https://demo.videowhisper.com/html5-videochat-php/)
+
 [HTML5 Live Video Streaming using P2P WebRTC](https://demo.videowhisper.com/vws-html5-livestreaming/)
 
 ![PHP Live Streaming Webcam](/snapshots/h5a-playback.jpg)
@@ -46,7 +69,7 @@ For testing, get a free plan from [WebRTC Host: P2P](https://webrtchost.com/host
 1.  If you don't use a [turnkey webrtc relay streaming host](https://webrtchost.com/hosting-plans/), configure WebRTC + SSL with Wowza SE or the VideoWhisper WebRTC + STUN/TURN server.
 2.  Deploy files to your web installation location. (Example: yoursite.domain/html5-videochat/)
 3.  Fill your streaming settings in settings.php file
-4.  If you don't have SuPHP, enable write permissions (0777) for folder "uploads", required to save session and chat info.
+4. Give the PHP account ownership of its private state directory (0700). Public recording files use 0755 directories and 0644 files; do not use world-writable permissions.
 
 ## Plain PHP Edition Limitations
 
@@ -71,9 +94,9 @@ For a quick setup, see [VideoWhisper Turnkey Stream Hosting Plans](https://webrt
 
 ### VideoWhisper HTML5 Project Demos
 
-- [Video Call PHP / HTML5 Videochat on Wowza SE](https://demo.videowhisper.com/videocall-html5-videochat-php/)
+
 - [Video Call PHP / HTML5 Videochat on VideoWhisper WebRTC](https://demo.videowhisper.com/p2p-html5-videocall/)
-- [Live Streaming PHP / HTML5 Videochat on Wowza SE](https://demo.videowhisper.com/html5-videochat-php/)
+
 - [Live Streaming PHP / HTML5 Videochat on VideoWhisper WebRTC](https://demo.videowhisper.com/vws-html5-livestreaming/)
 - [Cam/Mic Recorder HTML5 - Standalone](https://demo.videowhisper.com/cam-recorder-html5-video-audio/)
 - [PaidVideochat Turnkey Site](https://paidvideochat.com/demo/)

@@ -6,8 +6,9 @@
 
 $options = array(
 	'serverType' => 'videowhisper', // videowhisper/wowza 
-	'vwsSocket' => 'wss://[videowhisper-server]:[port]',
-	'vwsToken' => 'server-token',
+	'vwsSocket' => getenv('VWH5_SOCKET') ?: '',
+	'vwsAccount' => getenv('VWH5_ACCOUNT') ?: '',
+	'vwsToken' => getenv('VWH5_TOKEN') ?: '',
 						
 	'wsURLWebRTC' => 'wss://-server-id-.streamlock.net:1937/webrtc-session.json', 
 	'applicationWebRTC' => '-application-name-', 
@@ -36,17 +37,24 @@ $options = array(
 </tips>'
 );
 
+// Optional operator-owned configuration outside the web root. Never export it.
+$configFile = getenv('VWH5_CONFIG');
+if ($configFile && is_file($configFile)) {
+    $privateOptions = require $configFile;
+    if (is_array($privateOptions)) $options = array_replace_recursive($options, $privateOptions);
+}
+
 //installation url & integration calls
 const VW_H5V_URL = ''; //leave blank if loading from same folder, ex: https://yoursite.com/html5-videochat/
 const VW_H5V_CALL = VW_H5V_URL . 'app-call.php?v=1';
 
 //development & debugging
-define('VW_DEVMODE', 1);
+define('VW_DEVMODE', 0);
 define('VW_DEVMODE_COLLABORATION', 0);
 define('VW_DEVMODE_CLIENT', 0);
 
 if (VW_DEVMODE)
 {
 	ini_set('display_errors', 1);
-	error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
+	error_reporting(E_ALL & ~E_NOTICE);
 }

@@ -1,0 +1,8 @@
+Options -Indexes
+<FilesMatch "\.(php[0-9]*|phtml|phar|cgi|pl|shtml|html?|js|svg)$">
+Require all denied
+</FilesMatch>
+<FilesMatch "^[0-9]+_(sessions|messages|room)$">
+Require all denied
+</FilesMatch>
+Header set X-Content-Type-Options nosniff

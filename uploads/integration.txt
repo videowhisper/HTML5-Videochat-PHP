@@ -1,1 +1,0 @@
-This demonstrative edition will upload data to this folder. When integrating in own project, data should be saved in database depending on project framework.

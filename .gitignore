@@ -1,0 +1,12 @@
+.DS_Store
+.env*
+!.env.example
+.vscode/
+settings.local.php
+*.log
+node_modules/
+uploads/*
+!uploads/.htaccess
+*.map
+source/build/
+source/.cache/

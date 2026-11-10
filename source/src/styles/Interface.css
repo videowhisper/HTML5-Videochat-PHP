@@ -1,0 +1,144 @@
+
+
+/* Interface Elements, contained in Controls */
+.videowhisperAppLogo{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  max-width: 100px;
+}
+
+/* Videos */
+.localVideo
+{
+
+}
+
+.localVideoPlay
+{
+
+}
+
+/* History  */
+
+  .chatMessageList {
+    position: absolute;
+    width: 100%;
+    height: 100%;  
+    overflow-y: scroll;
+  /*  background-color: rgb(225, 233, 225); */
+    padding: 0;
+    margin: 0;
+  }
+
+  .chatMessageList {
+    list-style-type: none;
+  }
+
+  .chatMessageList li {
+    position: relative;
+  }
+
+  .chatMessage {
+    list-style-type: none;
+    padding-right: 10px;
+    font-size: 12px;  
+    color: #777;
+    font-weight: normal; 
+  }
+
+  .chatMessage.dark
+  {
+    color: #FFF;
+  }
+
+  .chatMessage.notification {
+    color: #7A7;
+  }
+
+  .chatMessage.dark.notification
+  {
+    color: #EFE; 
+  }
+
+  .chatMessage.automated {
+    font-style: italic;
+    color: #7AA;
+  }
+
+  .chatMessage.user {
+    text-align: left;
+  }
+
+  .chatMessage img {
+    vertical-align: middle;
+    padding: 2px;  
+  }
+
+  .chatMessage label {
+    display: inline-block;
+    max-width: 85%;
+    background-color: white;  
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+    margin-left: 46px;
+    margin-right: 40px;
+  }
+
+  .chatMessage.dark label{
+    background-color: #111;  
+  }
+
+  .chatMessage.user strong {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px;
+    font-weight: normal;
+  }
+
+  .chatMessage.user i {
+    font-size: 10px;  
+    padding: 3px;   
+  }
+
+  .chatMessage.user.own {
+    text-align: right;
+  }
+
+
+.chatMessage label::before {
+  content: '';
+  border-top:10px solid #FFF;
+  border-left:10px solid transparent;
+  bottom: 16px;
+  left: 36px;
+  position: absolute;
+}
+
+.chatMessage.dark label::before{
+  border-top:10px solid #111;
+}
+
+.chatMessage.own label::before{
+  left: unset;
+  right: 40px;
+  border-top:10px solid #FFF;
+  border-right:10px solid transparent;
+}
+
+.chatMessage.dark label::before{
+  border-top:10px solid #111;
+}
+
+.chatMessage .avatar {
+  position: absolute;
+  left: 0px;
+  top: 32px;
+}
+
+.chatMessage.own .avatar {
+  position: absolute;
+  left: unset;
+  right: 0px;
+}

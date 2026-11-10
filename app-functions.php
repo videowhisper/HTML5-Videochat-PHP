@@ -6,28 +6,22 @@
 //https://plugins.svn.wordpress.org/ppv-live-webcams/trunk/inc/h5videochat.php
 
 
-//demo setup saves variables in plain files in uploads folder: integration should use framework database
-
-		function varSave($path, $var)
-		{
-			if (!file_exists('uploads')) mkdir('uploads');
-			file_put_contents('uploads/' . $path, serialize($var));
-		}
-
-		function varLoad($path)
-		{
-			if (!file_exists('uploads/' . $path)) return false;
-
-			return unserialize(file_get_contents('uploads/' . $path));
-		}
-
-		function arrayLoad($path)
-		{
-			$res = varLoad($path);
-
-			if (is_array($res)) return $res;
-			else return array();
-		}
+require_once __DIR__ . '/demo-security.php';
+function demo_state_path($path) {
+    if (!is_string($path) || !preg_match('/^[0-9]+_(sessions|room|messages)$/D', $path)) throw new RuntimeException('Invalid state key.');
+    return demo_state_dir() . '/' . $path;
+}
+function varSave($path, $var) {
+    if (is_array($var) && str_ends_with($path, '_messages') && count($var) > 200) $var = array_slice($var, -200, null, true);
+    if (file_put_contents(demo_state_path($path), serialize($var), LOCK_EX) === false) throw new RuntimeException('Cannot save demo state.');
+    chmod(demo_state_path($path), 0600);
+}
+function varLoad($path) {
+    $file = demo_state_path($path);
+    if (!is_file($file) || is_link($file) || filesize($file) > 2*1024*1024) return false;
+    return unserialize(file_get_contents($file), ['allowed_classes'=>false]);
+}
+function arrayLoad($path) { $value = varLoad($path); return is_array($value) ? $value : []; }
 
 // app parameter functions
 
@@ -149,11 +143,12 @@
 function appRoomUsers($roomID, $options)
 	{
 
+		$items = [];
 		$sessions = arrayLoad($roomID . '_sessions');
 
 		foreach ($sessions as $key => $session)
 			{
-				if (!isset($session['meta']) || !is_array( $userMeta = unserialize($session['meta']) ) ) $userMeta = array();
+				if (!isset($session['meta']) || !is_array( $userMeta = unserialize($session['meta'], ['allowed_classes'=>false]) ) ) $userMeta = array();
 
 				$item = [];
 				$item['userID'] = intval($session['uid']);
@@ -164,7 +159,7 @@ function appRoomUsers($roomID, $options)
 				$item['meta'] = $userMeta;
 				$item['updated'] = intval($session['edate']);
 				$item['avatar'] =  VW_H5V_URL .'images/avatar.png';
-				$item['url'] = 'https://videowhisper.com/tickets_submit.php';
+				$item['url'] = 'https://consult.videowhisper.com/';
 
 				$items[intval($session['uid'])] = $item;
 			}
@@ -182,7 +177,6 @@ function appRoomUsers($roomID, $options)
 			$p = xml_parser_create();
 			xml_parse_into_struct($p, trim($tipOptions), $vals, $index);
 			$error = xml_get_error_code($p);
-			xml_parser_free($p);
 
 			if (is_array($vals)) return $vals;
 		}

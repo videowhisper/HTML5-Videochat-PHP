@@ -1,0 +1,508 @@
+/* Panel Layouts */
+.layoutChat {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "history"
+  "send";
+  grid-template-columns: 100%;
+  grid-template-rows: auto 60px;
+}
+
+.layoutTabs {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "menu"
+  "pane";
+  grid-template-columns: 100%;
+  grid-template-rows: 45px auto;
+}
+
+.layoutList {
+position: absolute;
+display: grid;
+width: 100%;
+height: 100%;
+grid-template-areas: "scrollable"
+"menu";
+grid-template-columns: 100%;
+grid-template-rows: auto 55px;
+}
+
+.layoutScrollable {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "scrollable";
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+}
+
+.paneActive
+{
+  visibility: visible;
+}
+
+.paneInactive
+{
+  visibility: hidden;
+}
+
+/* App Layouts */
+
+.layoutBroadcast {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "camera history"
+    "actions send";
+    grid-template-columns: 45% 55%;
+    grid-template-rows: auto 55px;
+  }
+  
+  .layoutBroadcastAudio {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "camera"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 45px 45px;
+  }
+
+  .layoutPlayback {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video history"
+    "actions send";
+    grid-template-columns: 65% 35%;
+    grid-template-rows: auto 55px;
+  }
+
+  .layoutPlaybackAudio {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "video"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 45px 45px;
+  }
+
+  .layoutText {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 45px;
+  }
+
+  .layoutCollaborationText {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "tabs"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 45px;
+  }
+
+  .layoutWay2 {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video camera"
+    "video history"
+    "actions send";
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 40% auto 50px;
+  }
+
+  .layoutWay2Audio {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "video"
+    "camera"     
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 45px 45px 45px 45px;
+  }
+
+  .layoutCollaboration {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video tabs"
+    "actions tabs";
+    grid-template-columns: 65% 35%;
+    grid-template-rows: auto 45px;
+  }
+
+  .layoutCollaborationPiP {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video tabs";
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 100%;
+  }
+
+/* Mobile Layouts */
+/* For lower resolutions video takes full width and chat shows below */
+@media only screen and (max-width: 1150px)
+{  
+  .layoutBroadcast {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "camera"
+    "history"
+    "send"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 45% 45px 40px;
+  }
+
+  .layoutPlayback {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "history"
+    "send"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 30% 45px 40px;
+  }
+
+  .layoutWay2 {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "history"
+    "send"
+    "actions"
+    "camera";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 25% 45px 40px 25%;
+  }
+
+  .layoutCollaboration {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "actions"
+    "tabs";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 60px 45%;
+  } 
+
+  .layoutCollaborationText {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "tabs"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 60px;
+  }
+
+}
+
+/* For very low resolutions 2 rows action bar */
+@media only screen and (max-width: 800px)
+{ 
+  
+  .layoutText {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 90px;
+  }
+
+  .layoutCollaborationText {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "tabs"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 90px;
+  }
+
+  .layoutWay2Audio {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "video"
+    "camera"     
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 60px 90px 90px;
+  }
+
+   .layoutBroadcastAudio {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "camera"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 90px 65px;
+  }
+
+  .layoutPlaybackAudio {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "history"
+    "send"    
+    "video"    
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 55px 60px 90px;
+  }
+
+  .layoutBroadcast {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "camera"
+    "history"
+    "send"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 35% 45px 65px;
+  }
+  
+  .layoutPlayback {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "history"
+    "send"
+    "actions";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 30% 55px 90px;
+  }
+
+  .layoutWay2 {
+    position: absolute;    
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "history"
+    "send"
+    "actions"
+    "camera";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 20% 55px 90px 30%;
+  }
+
+  .layoutCollaboration{
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "video"
+    "actions"
+    "tabs";
+    grid-template-columns: 100%;
+    grid-template-rows: auto 90px 40%;
+  } 
+
+}
+
+
+  /* Panels/Components */
+  .layCamera {
+    position: relative;     
+    grid-area: camera;
+  }
+
+  .layVideo {
+    position: relative;     
+    grid-area: video;
+  }
+
+  .layHistory {
+    position: relative;
+    grid-area: history;
+  }
+
+  .laySend {
+    position: relative;
+    grid-area: send;
+  }
+
+  .layActions {
+    position: relative;
+    grid-area: actions;
+  }
+
+  .layTabs {
+    position: relative;
+    grid-area: tabs;
+  }
+
+  .layMenu {
+    position: relative;
+    grid-area: menu;
+  }
+
+  .layPane {
+    position: relative;
+    grid-area: pane;
+  }
+
+  .layChat {
+    position: relative;     
+    grid-area: chat;
+  }
+
+  .layScrollable {
+    position: relative;
+    grid-area: scrollable;
+    overflow-y: scroll;
+  }
+
+
+    /* Split Multimedia Views */
+    .split0 {
+      position: absolute;    
+      display: grid;
+      width: 100%;
+      height: 100%;
+      grid-template-areas: "media0";
+      grid-template-columns: 100%;
+      grid-template-rows: 100%;
+    }
+    .splitH2 {
+        position: absolute;    
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas: "media0 media1";
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+      }
+
+      .splitV2 {
+        position: absolute;    
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas: "media0"
+        "media1";
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+      } 
+
+      .splitH4, .splitV4 {
+        position: absolute;    
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas: "media0 media1"
+        "media2 media3";   
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+      }
+
+      .splitH6 {
+        position: absolute;    
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas: "media0 media1 media2"
+        "media3 media4 media5";   
+        grid-template-columns: 34% 33% 33%;
+        grid-template-rows: 50% 50%;
+      }
+
+      .splitV6 {
+        position: absolute;    
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas: "media0 media1"
+        "media2 media3"
+        "media4 media5";   
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 34% 33% 33%;
+      }
+
+     /* Split Multimedia View Slots */
+      .slot0 {
+        position: relative;     
+        grid-area: media0;
+      }
+      .slot1 {
+        position: relative;     
+        grid-area: media1;
+      }
+      .slot2 {
+        position: relative;     
+        grid-area: media2;
+      }
+      .slot3 {
+        position: relative;     
+        grid-area: media3;
+      }
+      .slot4 {
+        position: relative;     
+        grid-area: media4;
+      }
+      .slot5 {
+        position: relative;     
+        grid-area: media5;
+      }
