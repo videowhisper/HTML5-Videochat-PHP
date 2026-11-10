@@ -28,6 +28,7 @@ with tempfile.TemporaryDirectory(prefix='vwh5-check-') as temp:
   owner=browser();guest=browser();stranger=browser();entry='recorder.php' if (root/'recorder.php').exists() else ''
   own=proof(owner,entry);invited=proof(guest,entry+'?r='+own['roomID']);checks+=2
   a,h,data=post(owner,'login',own);assert a==200 and data['user']['ID']==int(own['userID']) and data['user']['sessionKey']==own['sessionKey'];assert 'no-store' in h['Cache-Control'];assert 'local-synthetic-token' not in json.dumps(data);checks+=3
+  assert isinstance(data['config'].get('nonce'),str) and len(data['config']['nonce'])>=24;checks+=1
   assert post(stranger,'login',own)[0]==403;checks+=1
   wrong=dict(own,roomID='9001' if own['roomID']!='9001' else '9002');assert post(owner,'login',wrong)[0]==403;checks+=1
   wrong=dict(own,sessionKey='wrong');assert post(owner,'login',wrong)[0]==403;checks+=1

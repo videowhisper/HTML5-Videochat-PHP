@@ -68,6 +68,7 @@ if ($task == 'login')
 	'actionFullpage' => false,
 
 	'serverURL' =>  VW_H5V_CALL,
+	'nonce' => $sessionKey,
 	'modeVersion' => '',
 
 	];
