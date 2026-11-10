@@ -45,7 +45,7 @@
   "devDependencies": {
     "react-redux": "^6.0.1",
     "redux": "^4.1.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "babel-preset-react": "^6.24.1",
     "fomantic-ui": "^2.8.8",
     "tsutils": "^3.21.0",
