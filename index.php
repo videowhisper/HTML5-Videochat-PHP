@@ -22,12 +22,12 @@ $headCode = '<link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/sem
 //app css & js
 $CSSfiles = scandir(dirname(  __FILE__ ) . '/static/css/');
 foreach($CSSfiles as $filename)
-	if (strpos($filename,'.css')&&!strpos($filename,'.css.map'))
+	if (preg_match('/\.css$/', $filename))
 		$headCode .= '<link href="' . VW_H5V_URL . 'static/css/' . $filename . '" rel="stylesheet" type="text/css">';
 
 $JSfiles = scandir(dirname(  __FILE__ ) . '/static/js/');
 foreach ($JSfiles as $filename)
-	if ( strpos($filename,'.js') && !strpos($filename,'.js.map'))
+	if ( preg_match('/\.js$/', $filename))
 		$bodyCode .= '<script src="' . VW_H5V_URL . 'static/js/' . $filename. '" type="text/javascript"></script>';
 
 
@@ -38,6 +38,7 @@ $bodyCode .= '<br><a class="ui button" href="' . $roomURL . '" target="_blank"><
 $bodyCode .= '</div>';
 ?>
 <head>
+<meta charset="UTF-8">
 <?php echo $headCode ?>
 </head>
 <body>

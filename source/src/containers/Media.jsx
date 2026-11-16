@@ -171,7 +171,7 @@ export default class Media extends Panel {
                         height='100%'
                         onError={this.playerError.bind(this)}
                         />);
-                        else showContent = (<Segment className={props.appState.className}className={props.appState.className}>{props.placement} - HLS not available for user #{content.userID}</Segment>);
+                        else showContent = (<Segment className={props.appState.className}>{props.placement} - HLS not available for user #{content.userID}</Segment>);
 
                         if (!showHLS) showContent = (<Video user={props.user} appState={props.appState} appStateUpdate={props.appStateUpdate} config={props.config} room={props.room} content={content} meta={props.meta} />);
                     }

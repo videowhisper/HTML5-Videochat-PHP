@@ -48,7 +48,7 @@ import '../styles/Interface.css';
 
 class App extends React.Component {
 
-    version = '2026.11.10';
+    version = '2026.11.17';
 
     //set false before build
     devMode = false;

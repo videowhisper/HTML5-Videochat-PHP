@@ -333,7 +333,7 @@ export default class Recorder extends Component {
         if (typeof MediaRecorder.isTypeSupported === "function")
         {   
             var fileTypes; 
-            if (this.state.mode === 'audio') fileTypes = { mp3: 'audio/mp4', mp3: 'audio/mpeg', wav: 'audio/wav', webm: 'audio/webm', ogg: 'audio/ogg' }
+            if (this.state.mode === 'audio') fileTypes = { mp3: 'audio/mpeg', wav: 'audio/wav', webm: 'audio/webm', ogg: 'audio/ogg' }
             else fileTypes = { mp4: 'video/mp4', webm: 'video/webm', mkv: 'video/x-matroska' }
 
             this.mimeType = Object.values(fileTypes).filter(MediaRecorder.isTypeSupported)[0];

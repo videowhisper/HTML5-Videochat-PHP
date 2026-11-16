@@ -1759,7 +1759,7 @@ export default class Camera extends Panel {
 				peerConnection.setLocalDescription(description)
 					.then(
 						() => {				
-							const message = {'target': peerID, 'type': 'offer', 'content': description, from: this.vwsPeerId, target: peerID, 'peerConfig': this.vwsPeerConfig };
+							const message = {'type': 'offer', 'content': description, from: this.vwsPeerId, target: peerID, 'peerConfig': this.vwsPeerConfig };
 							if (this.devMode) console.log('components/Camera vwsAddPeer/createOffer/setLocalDescription', message);
 							this.vwsSocket.emit("messagePeer", message );						}
 					)
