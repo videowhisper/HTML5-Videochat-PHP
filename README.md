@@ -1,4 +1,13 @@
 ## PHP-HTML5-Videochat / Live Streaming - Standalone PHP
+
+## Dependency security maintenance — 2026-11-17
+
+The build lockfile now uses node-forge **1.4.3**, including the fix for [CVE-2026-119192](https://github.com/advisories/GHSA-6qrw-m8cv-hcxf) and related Forge advisories. This dependency is used by the local HTTPS development certificate helper. It is absent from the shipped browser app; rebuilding with the patched tree reproduces all 22 existing static files byte for byte. No PHP behavior or streaming-server update is part of this patch.
+
+Run `npm ci` in `source/`, then `npm run test:security-dependencies` and the existing auth/layout tests before building. The new check rejects malformed RSA DigestInfo encodings while accepting canonical encodings, and verifies that the certificate helper still serves HTTPS with explicit local CA validation. Compatible create-ecdh, shell-quote and loader-utils fixes are also locked.
+
+Full npm audit still reports **173 legacy build-tool findings** (including inherited critical findings); the production dependency audit reports zero. These are separate results, not a clean full-tree claim. The remaining CRA/Gulp toolchain needs modernization. See [security maintenance and remaining work](SECURITY-MAINTENANCE.md).
+
 ## November 2026 maintenance update
 
 The bundled HTML5 Videochat app is built from source dated **2026.11.10**. The older recorder remains a compatibility example. For small group meetings use [Video Conference](https://demo.videowhisper.com/video-conference/); for webcam, microphone, screen capture and download-only recording use [the current recorder](https://demo.videowhisper.com/webcam-microphone-screen-recorder/). Neither requires Flash.
